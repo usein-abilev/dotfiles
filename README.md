@@ -8,12 +8,13 @@ The repo contains my personal configs for Linux to easily setup on a new machine
 ```bash
 sudo apt-get install stow
 ```
+using pacman:
+```bash
+sudo pacman -S stow
+```
+
 3. Apply all configs 
 ```bash
-stow -t ~ dotfiles
-```
-or specific ones
-```bash
-stow -t ~/.config dotfiles/.config
+cd dotfiles & stow -t ~/.config config 
 ```
 
