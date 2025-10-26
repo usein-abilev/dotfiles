@@ -1,0 +1,143 @@
+/* --- Global Styles --- */
+* {
+  font-family: 'SF Display Pro', 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif; 
+  font-size: 14px;
+  min-height: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+
+window#waybar {
+    padding: 5px;
+    background: transparent;
+    color: #fefefe;
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+    transition: background 0.2s ease;
+}
+
+/* ---------- Workspaces ---------- */
+#workspaces {
+  margin-left: 6px;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  margin: 3px 4px;
+  border-radius: 8px;
+  background: transparent;
+  color: #e89abf;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: rgba(255, 75, 156, 0.15);
+  color: #ff4b9c;
+  border: 1px solid rgba(255, 75, 156, 0.3);
+}
+
+#workspaces button.active {
+  background: #ff4b9c;
+  color: #ffffff;
+  border: 1px solid #ff4b9c;
+  box-shadow: 0 0 4px rgba(255, 75, 156, 0.6);
+}
+
+/* ---------- Modules (shared style) ---------- */
+#cpu, #memory, #network, #battery, #pulseaudio, #temperature, #clock, #tray, #custom-power {
+  padding: 0 10px;
+  margin: 0 4px;
+  border-radius: 8px;
+  background: rgba(15, 15, 20, 0.8); 
+  /* background: rgba(255, 255, 255, 0.05); */
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+/* ---------- Hover effect ---------- */
+#cpu:hover, #memory:hover, #network:hover, #battery:hover,
+#pulseaudio:hover, #temperature:hover, #clock:hover,
+#tray:hover, #custom-power:hover {
+  background: rgba(255, 75, 156, 0.15);
+  color: #ff4b9c;
+}
+
+/* ---------- Clock ---------- */
+#clock {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ---------- CPU & Memory ---------- */
+#cpu {
+  color: #ff80b5;
+}
+#memory {
+  color: #ffbde0;
+}
+
+/* ---------- Network ---------- */
+#network {
+  color: #d982f0;
+}
+#network.disconnected {
+  color: #ff5555;
+}
+
+/* ---------- Battery ---------- */
+#battery {
+  color: #e89abf;
+}
+#battery.charging {
+  color: #ff4b9c;
+}
+#battery.critical {
+  color: #ff2222;
+}
+
+/* ---------- Audio ---------- */
+#pulseaudio {
+  color: #ff8acb;
+}
+#pulseaudio.muted {
+  color: #888888;
+}
+
+/* ---------- Temperature ---------- */
+#temperature {
+  color: #ff8acb;
+}
+#temperature.critical {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+}
+
+/* ---------- Tray ---------- */
+#tray {
+  margin-right: 8px;
+}
+
+/* ---------- Power Button ---------- */
+#custom-power {
+  color: #ffffff;
+  background: rgba(255, 75, 156, 0.2);
+  font-weight: bold;
+  padding: 0 12px;
+  margin-right: 8px;
+}
+
+#custom-power:hover {
+  background: #ff4b9c;
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 75, 156, 0.6);
+}
+
+/* ---------- Tooltip ---------- */
+tooltip {
+  background: rgba(25, 25, 25, 0.9);
+  /* border: 1px solid rgba(255, 75, 156, 0.4); */
+  border-radius: 6px;
+  color: #fff;
+}
+

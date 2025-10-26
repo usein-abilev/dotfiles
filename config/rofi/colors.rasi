@@ -1,0 +1,59 @@
+* {
+    /* Primary brand color — violet glow */
+    primary: #6a2782;
+    primary-fixed: #8240a3;
+    primary-fixed-dim: #572169;
+    on-primary: #151017;
+    on-primary-fixed: #e8d9f7;
+    on-primary-fixed-variant: #b380d8;
+    primary-container: #2b1138;
+    on-primary-container: #d5b3f6;
+
+    /* Secondary — dim violet-grey tones */
+    secondary: #b7a5c9;
+    secondary-fixed: #c9b4da;
+    secondary-fixed-dim: #a891c3;
+    on-secondary: #1b1520;
+    on-secondary-fixed: #140d1b;
+    on-secondary-fixed-variant: #2e203a;
+    secondary-container: #261a33;
+    on-secondary-container: #e6d7f7;
+
+    /* Tertiary — subtle lavender-blue tint for highlights */
+    tertiary: #9b87e0;
+    tertiary-fixed: #b9a6ff;
+    tertiary-fixed-dim: #8670d8;
+    on-tertiary: #150b30;
+    on-tertiary-fixed: #1e1442;
+    on-tertiary-fixed-variant: #2a1b59;
+    tertiary-container: #2f1a60;
+    on-tertiary-container: #dfccff;
+
+    /* Error (kept neutral, not red-heavy) */
+    error: #ffb4ab;
+    on-error: #3f0000;
+    error-container: #600000;
+    on-error-container: #ffdcdc;
+
+    /* Surface / background tones */
+    surface: #0a0610; /* deep black-purple base */
+    surface-container: #16101e;
+    surface-container-high: #1f172b;
+    surface-container-highest: #291f37;
+    surface-container-low: #120c19;
+    surface-container-lowest: #090511;
+
+    /* Text and outlines */
+    on-surface: #d8d0e5;
+    on-surface-variant: #9b8fb3;
+    outline: #4b3f65;
+    outline-variant: #2d2440;
+
+    /* Effects */
+    shadow: #000000;
+    scrim: #000000;
+    inverse-surface: #dcd6e6;
+    inverse-on-surface: #21192b;
+    inverse-primary: #b084dc;
+}
+
