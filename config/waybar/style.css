@@ -1,3 +1,20 @@
+/* --- Color Variables --- */
+@define-color base-text #fafafa;
+@define-color primary #ff8acb;
+@define-color workspace-pink #e89abf;
+@define-color workspace-active #ff4b9c;
+@define-color workspace-hover rgba(255, 75, 156, 0.15);
+@define-color workspace-border rgba(255, 75, 156, 0.3);
+@define-color workspace-shadow rgba(255, 75, 156, 0.6);
+@define-color module-hover rgba(255, 75, 156, 0.15);
+@define-color critical #ff4444;
+@define-color critical-bg rgba(255, 68, 68, 0.1);
+@define-color disconnected #ff5555;
+@define-color muted #888888;
+@define-color power-bg rgba(255, 75, 156, 0.2);
+@define-color tooltip-bg rgba(25, 25, 25, 0.9);
+@define-color white #ffffff;
+
 /* --- Global Styles --- */
 * {
   font-family: 'SF Display Pro', 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif; 
@@ -11,8 +28,7 @@
 window#waybar {
     padding: 5px;
     background: transparent;
-    color: #fefefe;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+    color: @primary;
     transition: background 0.2s ease;
 }
 
@@ -26,32 +42,31 @@ window#waybar {
   margin: 3px 4px;
   border-radius: 8px;
   background: transparent;
-  color: #e89abf;
+  color: @workspace-pink;
   border: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-  background: rgba(255, 75, 156, 0.15);
-  color: #ff4b9c;
-  border: 1px solid rgba(255, 75, 156, 0.3);
+  background: @workspace-hover;
+  color: @workspace-active;
+  border: 1px solid @workspace-border;
 }
 
 #workspaces button.active {
-  background: #ff4b9c;
-  color: #ffffff;
-  border: 1px solid #ff4b9c;
-  box-shadow: 0 0 4px rgba(255, 75, 156, 0.6);
+  background: @workspace-active;
+  color: @white;
+  border: 1px solid @workspace-active;
+  box-shadow: 0 0 4px @workspace-shadow;
 }
 
 /* ---------- Modules (shared style) ---------- */
 #cpu, #memory, #network, #battery, #pulseaudio, #temperature, #clock, #tray, #custom-power {
+  min-width: 60px;
   padding: 0 10px;
   margin: 0 4px;
   border-radius: 8px;
-  background: rgba(15, 15, 20, 0.8); 
-  /* background: rgba(255, 255, 255, 0.05); */
-  color: #ffffff;
+  color: @primary;
   transition: all 0.2s ease;
 }
 
@@ -59,58 +74,44 @@ window#waybar {
 #cpu:hover, #memory:hover, #network:hover, #battery:hover,
 #pulseaudio:hover, #temperature:hover, #clock:hover,
 #tray:hover, #custom-power:hover {
-  background: rgba(255, 75, 156, 0.15);
-  color: #ff4b9c;
+  background: @module-hover;
+  color: @workspace-active;
 }
 
 /* ---------- Clock ---------- */
 #clock {
   font-weight: 600;
-  color: #ffffff;
-}
-
-/* ---------- CPU & Memory ---------- */
-#cpu {
-  color: #ff80b5;
-}
-#memory {
-  color: #ffbde0;
+  color: @base-text;
 }
 
 /* ---------- Network ---------- */
-#network {
-  color: #d982f0;
-}
 #network.disconnected {
-  color: #ff5555;
+  color: @disconnected;
 }
 
 /* ---------- Battery ---------- */
-#battery {
-  color: #e89abf;
-}
 #battery.charging {
-  color: #ff4b9c;
+  color: @workspace-active;
 }
 #battery.critical {
-  color: #ff2222;
+  color: @critical;
 }
 
 /* ---------- Audio ---------- */
 #pulseaudio {
-  color: #ff8acb;
+  color: @primary;
 }
 #pulseaudio.muted {
-  color: #888888;
+  color: @muted;
 }
 
 /* ---------- Temperature ---------- */
 #temperature {
-  color: #ff8acb;
+  color: @primary;
 }
 #temperature.critical {
-  color: #ff4444;
-  background: rgba(255, 68, 68, 0.1);
+  color: @critical;
+  background: @critical-bg;
 }
 
 /* ---------- Tray ---------- */
@@ -120,24 +121,24 @@ window#waybar {
 
 /* ---------- Power Button ---------- */
 #custom-power {
-  color: #ffffff;
-  background: rgba(255, 75, 156, 0.2);
+  min-width: 0;
+  color: @white;
+  background: @power-bg;
   font-weight: bold;
   padding: 0 12px;
-  margin-right: 8px;
+  margin-left: 8px;
+  /* margin-right: 8px; */
 }
 
 #custom-power:hover {
-  background: #ff4b9c;
-  color: #ffffff;
-  box-shadow: 0 0 8px rgba(255, 75, 156, 0.6);
+  background: @workspace-active;
+  color: @white;
+  box-shadow: 0 0 8px @workspace-shadow;
 }
 
 /* ---------- Tooltip ---------- */
 tooltip {
-  background: rgba(25, 25, 25, 0.9);
-  /* border: 1px solid rgba(255, 75, 156, 0.4); */
+  background: @tooltip-bg;
   border-radius: 6px;
-  color: #fff;
+  color: @white;
 }
-

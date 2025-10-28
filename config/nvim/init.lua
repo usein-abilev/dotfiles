@@ -46,8 +46,6 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",  { fg = "#fe8019", bg = "NON
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",  { fg = "#83a598", bg = "NONE" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",  { fg = "#b8bb26", bg = "NONE" })
 
-vim.cmd([[colorscheme gruvbox]])
-
 vim.keymap.set({'n', 'i', 'v'}, '<C-c>', '<Esc>:nohlsearch<CR>', { noremap = true, silent = true })
 
 -- directory view (project view)
@@ -82,3 +80,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- Add theme or transparency 
+vim.o.background = "dark"
+require"gruvbox".setup{
+    terminal_colors=true,
+    contrast="hard",
+    bold = true,
+}
+vim.cmd([[colorscheme gruvbox]])
+
+-- Make all backgrounds transparent
+vim.cmd([[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NonText guibg=NONE ctermbg=NONE
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE ctermbg=NONE
+  highlight SignColumn guibg=NONE ctermbg=NONE
+  highlight Folded guibg=NONE ctermbg=NONE
+  highlight FoldColumn guibg=NONE ctermbg=NONE
+  highlight CursorLine guibg=NONE ctermbg=NONE
+  highlight CursorColumn guibg=NONE ctermbg=NONE
+  highlight ColorColumn guibg=NONE ctermbg=NONE
+  highlight NormalFloat guibg=NONE ctermbg=NONE
+]])
+
+vim.cmd([[
+  "highlight CursorLineNr guibg=#3c3836 ctermbg=237
+  "highlight Pmenu guibg=#3c3836 ctermbg=237
+  "highlight PmenuSel guibg=#504945 ctermbg=239
+]])

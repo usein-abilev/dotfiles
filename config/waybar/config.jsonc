@@ -13,7 +13,6 @@
       "battery",
       "pulseaudio",
       "temperature",
-      "tray", 
       "custom/power"
   ],
 
@@ -36,7 +35,8 @@
   "clock": {
     "format": "{:%a, %b %d  %H:%M}",
     "tooltip-format": "{:%Y-%m-%d %H:%M:%S}",
-    "interval": 60
+    "interval": 60,
+    "on-click": "swaync-client -t -s"
   },
 
   "cpu": {
@@ -55,7 +55,8 @@
     "format-ethernet": "  {ipaddr}",
     "format-disconnected": "",
     "tooltip-format": "{ifname} {ipaddr}/{cidr}",
-    "interval": 10
+    "interval": 10,
+    "on-click": "nm-connnection-editor"
   },
 
   "battery": {
@@ -80,7 +81,7 @@
 
   "custom/power": {
     "format": "⏻",
-    "on-click": "systemctl poweroff"
+    "on-click": "wlogout"
   }
 }
 
