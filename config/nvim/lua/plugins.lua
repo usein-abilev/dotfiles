@@ -53,7 +53,6 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<Tab>"] = cmp.mapping(confirmCompletion),
-                    ["<Enter>"] = cmp.mapping(confirmCompletion),
                     ["<C-n>"] = cmp.mapping.select_next_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                 }),

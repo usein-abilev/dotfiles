@@ -89,20 +89,20 @@ require"gruvbox".setup{
 }
 vim.cmd([[colorscheme gruvbox]])
 
--- Make all backgrounds transparent
-vim.cmd([[
-  highlight Normal guibg=NONE ctermbg=NONE
-  highlight NonText guibg=NONE ctermbg=NONE
-  highlight EndOfBuffer guibg=NONE ctermbg=NONE
-  highlight LineNr guibg=NONE ctermbg=NONE
-  highlight SignColumn guibg=NONE ctermbg=NONE
-  highlight Folded guibg=NONE ctermbg=NONE
-  highlight FoldColumn guibg=NONE ctermbg=NONE
-  highlight CursorLine guibg=NONE ctermbg=NONE
-  highlight CursorColumn guibg=NONE ctermbg=NONE
-  highlight ColorColumn guibg=NONE ctermbg=NONE
-  highlight NormalFloat guibg=NONE ctermbg=NONE
-]])
+-- -- Make all backgrounds transparent
+-- vim.cmd([[
+--   highlight Normal guibg=NONE ctermbg=NONE
+--   highlight NonText guibg=NONE ctermbg=NONE
+--   highlight EndOfBuffer guibg=NONE ctermbg=NONE
+--   highlight LineNr guibg=NONE ctermbg=NONE
+--   highlight SignColumn guibg=NONE ctermbg=NONE
+--   highlight Folded guibg=NONE ctermbg=NONE
+--   highlight FoldColumn guibg=NONE ctermbg=NONE
+--   highlight CursorLine guibg=NONE ctermbg=NONE
+--   highlight CursorColumn guibg=NONE ctermbg=NONE
+--   highlight ColorColumn guibg=NONE ctermbg=NONE
+--   highlight NormalFloat guibg=NONE ctermbg=NONE
+-- ]])
 
 vim.cmd([[
   "highlight CursorLineNr guibg=#3c3836 ctermbg=237
