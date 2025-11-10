@@ -2,6 +2,14 @@ return {
     -- Theme 
     { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
 
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+    },
+
     -- Telescope 
     { "nvim-telescope/telescope.nvim", tag = "0.1.6",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -31,7 +39,7 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "ts_ls",
-                    -- "gopls",
+                    "gopls",
                     "eslint",
                 },
             })
@@ -53,6 +61,7 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<Tab>"] = cmp.mapping(confirmCompletion),
+                    ["<Enter>"] = cmp.mapping(confirmCompletion),
                     ["<C-n>"] = cmp.mapping.select_next_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                 }),

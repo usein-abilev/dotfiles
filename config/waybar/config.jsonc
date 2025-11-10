@@ -51,7 +51,7 @@
   },
 
   "network": {
-    "format-wifi": "  {essid}",
+    "format-wifi": " {essid}",
     "format-ethernet": "  {ipaddr}",
     "format-disconnected": "",
     "tooltip-format": "{ifname} {ipaddr}/{cidr}",
@@ -60,7 +60,7 @@
   },
 
   "battery": {
-    "format": "{icon}  {capacity}%",
+    "format": "{icon}\u00A0{capacity}%",
     "format-icons": ["", "", "", "", ""],
     "interval": 30
   },

@@ -17,8 +17,9 @@
 
 /* --- Global Styles --- */
 * {
-  font-family: 'SF Display Pro', 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif; 
+  font-family: 'AdwaitaMono Nerd Font', 'SF Pro Display', 'Inter', 'Segoe UI', 'JetBrainsMonoNL Nerd Font', sans-serif; 
   font-size: 14px;
+  font-weight: 500;
   min-height: 0;
   padding-right: 0px;
   padding-left: 0px;
@@ -80,6 +81,7 @@ window#waybar {
 
 /* ---------- Clock ---------- */
 #clock {
+  font-family: "SF Pro Display", sans-serif;
   font-weight: 600;
   color: @base-text;
 }
