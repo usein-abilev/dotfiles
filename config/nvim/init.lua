@@ -61,22 +61,27 @@ require"nvim-treesitter.configs".setup {
     highlight = { enable = true },
 }
 require('lualine').setup()
+require('telescope').load_extension('fzf')
 
 -- Global LSP attach handler
 vim.api.nvim_create_autocmd("LspAttach", { 
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function (_, buffer)
         local opts = { buffer = buffer, silent = true, noremap = true }
+        local builtin = require("telescope.builtin")
 
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
+        vim.keymap.set("n", "gr", builtin.lsp_references, opts)
+        vim.keymap.set("n", "gi", builtin.lsp_implementations, opts)
+        vim.keymap.set("n", "gt", builtin.lsp_type_definitions, opts)
+        vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, opts)
+        vim.keymap.set("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, opts)
+
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     end,
 })
 

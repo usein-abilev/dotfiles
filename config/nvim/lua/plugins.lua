@@ -2,23 +2,28 @@ return {
     -- Theme 
     { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
 
+    { "mg979/vim-visual-multi" },
+
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
+       -- install jsregexp (optional!).
         build = "make install_jsregexp"
     },
 
     -- Telescope 
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     { "nvim-telescope/telescope.nvim", tag = "0.1.6",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local builtin = require("telescope.builtin")
-            vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-            vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
-            vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
-            vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "Grep text" })
+            vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+            vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Help Tags" })
+            vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Live grep" })
+            vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Find buffers" })
+            vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Grep text" })
+            vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
         end,
   },
 
@@ -99,6 +104,11 @@ return {
             local conform = require("conform");
             conform.setup({
                 format_on_save = function(bufnr)
+                    conform.format({
+                        lsp_fallback = true,
+                        async=false,
+                        timeout_ms = 500,
+                    });
                 end,
                 formatters_by_ft = {
                     javascript = { "prettier", "eslint_d", stop_after_first = true },
