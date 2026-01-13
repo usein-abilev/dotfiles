@@ -1,22 +1,56 @@
 return {
     -- Theme 
-    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
+    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
+
+    {
+        "christoomey/vim-tmux-navigator",
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+        },
+        keys = {
+            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+        },
+    },
 
     { "mg979/vim-visual-multi" },
 
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        version = "v2.*",
        -- install jsregexp (optional!).
         build = "make install_jsregexp"
     },
 
     -- Telescope 
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    { "nvim-telescope/telescope.nvim", tag = "0.1.6",
-        dependencies = { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope.nvim", tag = "v0.2.1",
+        dependencies = { 
+            "nvim-lua/plenary.nvim",
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        },
         config = function()
+            local telescope = require("telescope")
+            telescope.setup({
+                defaults = {
+                    file_ignore_patterns = {
+                        "node_modules",
+                        ".git/",
+                    },
+                },
+                pickers = {
+                    find_files = {
+                        hidden = true,
+                    }
+                }
+            })
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
             vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Help Tags" })
@@ -25,7 +59,7 @@ return {
             vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Grep text" })
             vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
         end,
-  },
+    },
 
     -- LSP + Mason (LSP manager)
     { 
@@ -65,10 +99,11 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<Tab>"] = cmp.mapping(confirmCompletion),
-                    ["<Enter>"] = cmp.mapping(confirmCompletion),
+                    ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-n>"] = cmp.mapping.select_next_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
+                    ["<Tab>"] = cmp.mapping(confirmCompletion),
+                    ["<Enter>"] = cmp.mapping(confirmCompletion),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
@@ -78,7 +113,7 @@ return {
             })
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             vim.lsp.enable("ts_ls", { capabilities = capabilities })
-            -- vim.lsp.enable("gopls", { capabilities = capaibilities })
+            vim.lsp.enable("gopls", { capabilities = capaibilities })
             vim.lsp.enable("eslint", {
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)

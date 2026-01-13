@@ -46,6 +46,7 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",  { fg = "#fe8019", bg = "NON
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",  { fg = "#83a598", bg = "NONE" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",  { fg = "#b8bb26", bg = "NONE" })
 
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-c>', '<Esc>:nohlsearch<CR>', { noremap = true, silent = true })
 
 -- directory view (project view)
@@ -55,11 +56,28 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+if vim.fn.has('wsl') == 1 then
+    vim.g.clipboard = {
+        name = 'WslClipboard',
+        copy = {
+            ['+'] = 'clip.exe',
+            ['*'] = 'clip.exe',
+        },
+        paste = {
+            ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        },
+        cache_enabled = 0,
+    }
+end
+
 -- Configure nvim-treesitter
-require"nvim-treesitter.configs".setup {
-    ensure_installed = { "lua", "javascript", "typescript", "c", "go" },
-    highlight = { enable = true },
-}
+require"nvim-treesitter".install { "lua", "javascript", "typescript", "c", "go" }
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
+
 require('lualine').setup()
 require('telescope').load_extension('fzf')
 
@@ -79,8 +97,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     end,
 })
@@ -88,29 +106,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Add theme or transparency 
 vim.o.background = "dark"
 require"gruvbox".setup{
+    transparent_mode=true,
     terminal_colors=true,
     contrast="hard",
-    bold = true,
+    bold = false,
+    overrides = {
+        typescriptVariable = { link = "GruvboxRed" },
+        typescriptOperator = { link = "GruvboxRed" },
+        ["@lsp.type.member.typescript"] = { link = "typescriptMember" }, -- GruvboxAqua
+    },
 }
 vim.cmd([[colorscheme gruvbox]])
 
--- -- Make all backgrounds transparent
--- vim.cmd([[
---   highlight Normal guibg=NONE ctermbg=NONE
---   highlight NonText guibg=NONE ctermbg=NONE
---   highlight EndOfBuffer guibg=NONE ctermbg=NONE
---   highlight LineNr guibg=NONE ctermbg=NONE
---   highlight SignColumn guibg=NONE ctermbg=NONE
---   highlight Folded guibg=NONE ctermbg=NONE
---   highlight FoldColumn guibg=NONE ctermbg=NONE
---   highlight CursorLine guibg=NONE ctermbg=NONE
---   highlight CursorColumn guibg=NONE ctermbg=NONE
---   highlight ColorColumn guibg=NONE ctermbg=NONE
---   highlight NormalFloat guibg=NONE ctermbg=NONE
--- ]])
-
-vim.cmd([[
-  "highlight CursorLineNr guibg=#3c3836 ctermbg=237
-  "highlight Pmenu guibg=#3c3836 ctermbg=237
-  "highlight PmenuSel guibg=#504945 ctermbg=239
-]])
