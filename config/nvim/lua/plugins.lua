@@ -21,6 +21,17 @@ return {
 
     { "mg979/vim-visual-multi" },
 
+    { "mbbill/undotree" },
+
+    { "tpope/vim-fugitive" },
+
+    { 
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+        end,
+    },
+
     {
         "L3MON4D3/LuaSnip",
         version = "v2.*",

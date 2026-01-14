@@ -40,22 +40,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugins
 require("lazy").setup("plugins")
 
--- Customize diagnostic virtual text colors
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#fb4934", bg = "NONE" }) -- red
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",  { fg = "#fe8019", bg = "NONE" }) -- orange
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",  { fg = "#83a598", bg = "NONE" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",  { fg = "#b8bb26", bg = "NONE" })
-
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set({'n', 'i', 'v'}, '<C-c>', '<Esc>:nohlsearch<CR>', { noremap = true, silent = true })
-
--- directory view (project view)
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
--- Move selected lines up/down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 if vim.fn.has('wsl') == 1 then
     vim.g.clipboard = {
         name = 'WslClipboard',
@@ -80,6 +64,22 @@ vim.api.nvim_create_autocmd('FileType', {
 
 require('lualine').setup()
 require('telescope').load_extension('fzf')
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-c>', '<Esc>:nohlsearch<CR>', { noremap = true, silent = true })
+
+-- directory view (project view)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Move selected lines up/down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Bind undotree to space+u
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- Git integration
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
 -- Global LSP attach handler
 vim.api.nvim_create_autocmd("LspAttach", { 
@@ -117,4 +117,10 @@ require"gruvbox".setup{
     },
 }
 vim.cmd([[colorscheme gruvbox]])
+
+-- Customize diagnostic virtual text colors
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#fb4934", bg = "NONE" }) -- red
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn",  { fg = "#fe8019", bg = "NONE" }) -- orange
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo",  { fg = "#83a598", bg = "NONE" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint",  { fg = "#b8bb26", bg = "NONE" })
 
