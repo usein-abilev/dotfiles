@@ -111,6 +111,9 @@ require"gruvbox".setup{
     contrast="hard",
     bold = false,
     overrides = {
+        NormalFloat = { bg = "#282828" },
+        FloatBorder = { fg = "#ebdbb2", bg = "#282828" },
+
         typescriptVariable = { link = "GruvboxRed" },
         typescriptOperator = { link = "GruvboxRed" },
         ["@lsp.type.member.typescript"] = { link = "typescriptMember" }, -- GruvboxAqua
