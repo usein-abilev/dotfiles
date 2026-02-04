@@ -16,6 +16,7 @@ vim.opt.statusline = "%{toupper(mode())} | %f %y %m %= %l:%c [%p%%]"
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
+vim.g.omni_sql_no_default_maps = 1
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
