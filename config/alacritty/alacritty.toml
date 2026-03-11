@@ -1,56 +1,60 @@
-[colors.bright]
-black = "#88807C"
-blue = "#48B9C7"
-cyan = "#34E2E2"
-green = "#73C48F"
-magenta = "#AD7FA8"
-red = "#F15D22"
-white = "#EEEEEC"
-yellow = "#FFCE51"
-
-[colors.normal]
-black = "#202020"
-blue = "#61afef"
-cyan = "#56b6c2"
-green = "#98c379"
-magenta = "#c678dd"
-red = "#CC0000"
-white = "#D3D7CF"
-yellow = "#d19a66"
-
-[colors.primary]
-background = "#222222" #"#2b2e37"
-foreground = "#F2F2F2"
-
 [font]
-size = 14.0
+size = 16
+offset.y = 3
+glyph_offset.y = 2
 
 [font.bold]
-family = "JetBrainsMonoNL Nerd Font Mono"
+family = "SFMono Nerd Font"
 style = "Bold"
 
+[font.bold_italic]
+family = "SFMono Nerd Font"
+style = "Bold Italic"
+
 [font.italic]
-family = "JetBrainsMonoNL Nerd Font Mono"
+family = "SFMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMonoNL Nerd Font Mono"
+family = "SFMono Nerd Font"
 style = "Regular"
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Command"
+# [font.normal]
+# # family = "JetBrains Mono"
+# family = "SFMono Nerd Font"
 
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Command"
+[general]
+import = [
+    "gnome_terminal"
+]
+
+[env]
+TERM = "xterm-256color"
 
 [window]
 dynamic_title = true
-opacity = 0.5
 
-[window.dimensions]
-columns = 120
-lines = 35
+[colors.primary]
+background = '#1c1c1f'
+foreground = '#ffffff'
+
+[colors.normal]
+black   = '#171717'
+red     = '#c01c28'
+green   = '#2ec27e'
+yellow  = '#f5c211'
+blue    = '#1e78e4'
+magenta = '#a347ba'
+cyan    = '#2aa1b3'
+white   = '#d0cfcc'
+
+[colors.bright]
+black   = '#5e5c64'
+red     = '#f66151'
+green   = '#33da7a'
+yellow  = '#e9ad0c'
+blue    = '#2a7bde'
+magenta = '#c061cb'
+cyan    = '#33c7de'
+white   = '#ffffff'
+

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-selected=$(find /mnt/d/dev ~/dev -mindepth 1 -maxdepth 3 -type d | fzf)
+selected=$(find /mnt/d/dev ~/dotfiles -mindepth 0 -maxdepth 3 -type d | fzf)
 if [[ -z $selected ]]; then exit 0; fi
 name=$(basename "$selected" | tr . _)
 if ! tmux has-session -t=$name 2> /dev/null; then
