@@ -33,6 +33,8 @@ TERM = "xterm-256color"
 
 [window]
 dynamic_title = true
+padding.x = 5
+padding.y = 5
 
 [colors.primary]
 background = '#1c1c1f'
