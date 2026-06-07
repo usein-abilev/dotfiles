@@ -1,0 +1,70 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "network",
+        "battery",
+        "custom/vpn",
+        "pulseaudio",
+        "custom/control-center"
+    ],
+    "hyprland/window": {
+        "max-length": 40,
+        "separate-outputs": true,
+        "tooltip": true
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
+        "on-click": "swaync-client -t"
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
+        "tooltip-format-ethernet": "{ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+    "custom/vpn": {
+        "exec": "/home/usein/.config/hypr/scripts/vpn-status.sh",
+        "return-type": "json",
+        "interval": 10,
+        "on-click": "nm-connection-editor"
+    },
+    "battery": {
+        "format": "{icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip-format": "{capacity}%"
+    },
+    "clock": {
+        "format": "{:%H:%M  %a %d %b}",
+        "interval": 60,
+        "tooltip-format": "{:%A %d %B %Y}"
+    },
+    "custom/control-center": {
+        "format": " {}",
+        "return-type": "json",
+        "exec": "/home/usein/.config/hypr/scripts/control-center.sh",
+        "on-click": "swaync-client -t",
+        "on-click-right": "swaync-client -d"
+    }
+}

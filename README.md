@@ -9,7 +9,7 @@ The repo contains my personal configs for Linux to easily setup on a new machine
 | `nvim/` | **Neovim** - Gruvbox theme, lazy.nvim (18 plugins), LSP (ts_ls/gopls/eslint via mason), Telescope+fzf, nvim-cmp+LuaSnip, conform.nvim formatting, fugitive+gitsigns |
 | `.tmux.conf` | **Tmux** - Ctrl+S leader, vim-style pane nav, tpm plugin manager, vim-tmux-navigator |
 | `alacritty/` | **Alacritty** - terminal emulator, SFMono Nerd Font 16pt, custom dark palette |
-| `hypr/` | **Hyprland** - Wayland compositor |
+| `hypr/` | **Hyprland** - Wayland compositor, screenshot scripts |
 
 ## Standalone Scripts (`scripts/`)
 

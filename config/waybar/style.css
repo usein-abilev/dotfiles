@@ -1,0 +1,68 @@
+* {
+    font-size: 13px;
+    font-family: "Cantarell", "Font Awesome 6 Free Solid", "SFMono Nerd Font", "Noto Color Emoji", sans-serif;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(30, 30, 30, 0.95);
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+}
+
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #666;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    min-width: 20px;
+}
+
+#workspaces button.active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#window {
+    padding: 0 12px;
+    color: #ccc;
+    border-left: 1px solid #444;
+}
+
+#clock {
+    padding: 0 12px;
+    font-weight: bold;
+}
+
+#pulseaudio, #network, #battery, #custom-control-center, #custom-vpn {
+    padding: 0 10px;
+    font-weight: 900;
+}
+
+#pulseaudio:hover, #network:hover, #battery:hover, #custom-control-center:hover, #custom-vpn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#custom-vpn {
+    color: #8bc34a;
+}
+
+#custom-vpn.disconnected {
+    color: transparent;
+    padding: 0;
+    min-width: 0;
+}
+
+#custom-control-center {
+    font-size: 16px;
+    min-width: 30px;
+}
