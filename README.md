@@ -18,8 +18,8 @@ The repo contains my personal configs for Linux to easily setup on a new machine
 | `install.sh` | One-shot setup: stow, Oh My Zsh, Neovim nightly, Volta (Node), Go, aliases |
 | `tmux-sessionizer` | fzf + tmux: fuzzy-find dirs in `/mnt/d/dev` and `~/dotfiles`, create/attach session |
 | `clipvault-rofi-img.sh` | Rofi GUI for clipvault clipboard manager with image thumbnails |
-| `convert_to_h264.sh` | Batch `.mov` -> `.mp4` H.264 (CRF 18, slow, BT.709) |
-| `convert_to_dnxhr.sh` | Batch `.mp4`-> `.mov` DNxHR HQ (DaVinci Resolve compatible) |
+| `convert-to-h264.sh` | Batch `.mov` -> `.mp4` H.264 (CRF 18, slow, BT.709) |
+| `convert-to-dnxhr.sh` | Batch `.mp4`-> `.mov` DNxHR HQ (DaVinci Resolve compatible) |
 
 ## Installation
 
