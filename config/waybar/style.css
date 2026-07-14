@@ -1,12 +1,12 @@
 * {
-    font-size: 13px;
-    font-family: "Cantarell", "Font Awesome 6 Free Solid", "SFMono Nerd Font", "Noto Color Emoji", sans-serif;
+    font-size: 14px;
+    font-family: "SFMono Nerd Font", "Cantarell", "Noto Color Emoji", sans-serif;
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(30, 30, 30, 0.95);
-    color: #ffffff;
+    background: rgba(27, 27, 27, 1);
+    color: #fefefe;
     border-bottom: 1px solid #444;
 }
 
@@ -43,12 +43,12 @@ window#waybar {
     font-weight: bold;
 }
 
-#pulseaudio, #network, #battery, #custom-control-center, #custom-vpn {
+#custom-audio, #network, #battery, #custom-control-center, #custom-vpn {
     padding: 0 10px;
     font-weight: 900;
 }
 
-#pulseaudio:hover, #network:hover, #battery:hover, #custom-control-center:hover, #custom-vpn:hover {
+#custom-audio:hover, #network:hover, #battery:hover, #custom-control-center:hover, #custom-vpn:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -65,4 +65,13 @@ window#waybar {
 #custom-control-center {
     font-size: 16px;
     min-width: 30px;
+}
+
+#custom-power {
+    padding: 0 12px;
+    font-size: 16px;
+}
+
+#custom-power:hover {
+    background: rgba(255, 255, 255, 0.1);
 }

@@ -1,141 +1,111 @@
 @theme "/dev/null"
 
-// @define-color theme_fg rgba(248, 248, 252, 0.98); /* Primary Text */
-// @define-color theme_fg_secondary rgba(215, 220, 225, 0.78); /* Secondary Text */
-// @define-color theme_bg rgba(22, 22, 28, 0.22); /* Panel/Background */
-// @define-color popup_bg rgba(20, 25, 25, 0.5); /* Floating Notification Background */
-// @define-color module_bg rgba(20, 20, 20, 0.46); /* Default Module Background */
-// @define-color module_hover_bg rgba(210, 215, 225, 0.35); /* Module Hover */
-// @define-color button_bg rgba(130, 135, 145, 0.28); /* Button Default */
-// @define-color button_hover_bg rgba(150, 155, 165, 0.40); /* Button Hover */
-// @define-color accent_color rgba(10, 132, 255, 0.8); /* Accent Active */
-// @define-color accent_color_hover #198de5; /* Accent Hover */
-// @define-color border_light rgba(255, 255, 255, 0.18);
-// @define-color border_dark rgba(0, 0, 0, 0.06);
-// @define-color border_medium alpha(@border_light, 0.5); /* Approx rgba(255, 255, 255, 0.09) */
-// @define-color icon_primary @theme_fg;
-* {
-	font:   "SF Pro Text 12";
-    bg0     : #1e1e1e9f;
-	bg1     : #20202010;
-	bg2     : #24283b;
-	bg3     : #3333337f;
-	fg0     : #c0caf5;
-	fg1     : #a9b1d6;
-	fg2     : #737aa2;
-	red     : #823d9981;
-	green   : #9ece6a;
-	yellow  : #e0af68;
-	blue    : #7aa2f7;
-	magenta : #9a7ecc;
-	cyan    : #4abaaf;
-
-	accent: @red;
-	urgent: @yellow;
-
-	background-color : transparent;
-	text-color       : @fg0;
-
-	margin  : 0;
-	padding : 0;
-	spacing : 0;
+configuration {
+    show-icons: true;
 }
 
-element-icon, element-text, scrollbar {
-	cursor: pointer;
+* {
+    font:   "SF Pro Text 12";
+
+    /* ---- GNOME Adwaita Dark palette ---- */
+    base:           #1e1e1e;
+    surface:        #2a2a2a;
+    surface-alt:    #333333;
+    border:         #444444;
+
+    accent:         #3584e4;
+    accent-hover:   #4a90d9;
+
+    text-primary:   #ffffff;
+    text-secondary: #e6e6e6;
+    text-tertiary:  #969696;
+    text-muted:     #555555;
+
+    background-color: transparent;
+    text-color:       @text-primary;
+
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
 }
 
 window {
-	location : center;
-	width    : 380px;
-	x-offset : 0;
-	y-offset : 0;
+    location:       center;
+    width:          480px;
+    border-radius:  16px;
 
-	transparency: "real";
-	background-color: @bg1;
-	border: 1px;
-	border-color: @bg3;
-	border-radius: 8px;
+    background-color: @base;
+    border:          1px;
+    border-color:    @border;
 }
 
-dummy { 
-    background-color: #ff0000;
+mainbox {
+    padding:    12px;
 }
 
 inputbar {
-	spacing  : 8px;
-	// padding  : 4px 8px;
-    padding: 16px 8px;
-	children : [ textbox-prompt-colon, entry ];
+    background-color: @surface;
+    border:          2px;
+    border-color:    @accent;
+    border-radius:   12px;
 
-	background-color: @bg0;
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
 }
-textbox-prompt-colon {
-    enabled: true;
-    expand: false;
+
+prompt {
+    text-color: @text-tertiary;
     str: "  ";
-    background-color: transparent;
-    text-color: inherit;
 }
 
-entry { 
-    placeholder: "Search";
-}
-
-entry, element-icon, element-text {
-	vertical-align: 0.5;
-}
-
-textbox {
-	padding          : 4px 8px;
-	background-color : @bg2;
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @text-muted;
 }
 
 listview {
-	padding      : 8px 8px;
-	lines        : 12;
-	columns      : 1;
-	scrollbar    : true;
-	fixed-height : false;
-	dynamic      : true;
+    background-color: transparent;
+
+    margin:     12px 0 0;
+    lines:      8;
+    columns:    1;
+
+    fixed-height: false;
+    dynamic:    true;
 }
 
 element {
-	padding : 4px 8px;
-	spacing : 8px;
-	border-radius: 8px;
-}
-
-element normal urgent {
-	text-color: @urgent;
+    padding:        4px 12px;
+    spacing:        8px;
+    border-radius:  8px;
 }
 
 element normal active {
-	text-color: @accent;
+    text-color: @accent;
 }
 
 element alternate active {
-	text-color: @accent;
+    text-color: @accent;
 }
 
-element selected {
-	background-color : #88888866;
-}
-
-element selected urgent {
-	background-color: @urgent;
+element selected normal,
+element selected active {
+    background-color: @accent;
+    text-color:       @text-primary;
 }
 
 element-icon {
-	size: 2.8em;
+    size:           24px;
+    vertical-align: 1.5;
 }
 
 element-text {
-	text-color: inherit;
+    text-color: inherit;
 }
 
 scrollbar {
-	handle-width : 4px;
-	handle-color : @fg2;
-	padding      : 0 4px;
+    handle-width: 4px;
+    handle-color: @text-tertiary;
+    padding:      0 4px;
 }
