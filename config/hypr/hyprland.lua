@@ -1,8 +1,7 @@
 -- Programs used across modules
 terminal    = "alacritty"
 fileManager = "nautilus"
-menu        = "hyprlauncher"
-clipboard   = "/usr/local/bin/cursor-clip"
+-- handled by scripts/super-launcher.py (evdev listener)
 hyprshot    = "/usr/local/bin/hyprshot"
 
 ------------------
@@ -21,9 +20,8 @@ hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("GBM_BACKEND", "nvidia-drm")
-hl.env("NVD_BACKEND", "direct")
-hl.env("WLR_DRM_NO_MODIFIERS", "1")
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
+-- indirect is more stable on NVIDIA 500-series drivers
+hl.env("NVD_BACKEND", "indirect")
 
 hl.config({
     misc = {
@@ -56,15 +54,15 @@ hl.permission("/usr/bin/grim", "screencopy", "allow")
 ---- WINDOWS ----
 -----------------
 local suppressMaximizeRule = hl.window_rule({
-    name  = "suppress-maximize-events",
-    match = { class = ".*" },
+    name           = "suppress-maximize-events",
+    match          = { class = ".*" },
 
     suppress_event = "maximize",
 })
 
 hl.window_rule({
-    name  = "fix-xwayland-drags",
-    match = {
+    name     = "fix-xwayland-drags",
+    match    = {
         class      = "^$",
         title      = "^$",
         xwayland   = true,
@@ -89,17 +87,17 @@ hl.window_rule({
 ---------------
 hl.config({
     input = {
-        kb_layout  = "us,ru",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "grp:alt_shift_toggle",
-        kb_rules   = "",
+        kb_layout    = "us,ru",
+        kb_variant   = "",
+        kb_model     = "",
+        kb_options   = "grp:alt_shift_toggle",
+        kb_rules     = "",
 
         follow_mouse = 1,
 
-        sensitivity = 0,
+        sensitivity  = 0,
 
-        touchpad = {
+        touchpad     = {
             natural_scroll = false,
         },
     },

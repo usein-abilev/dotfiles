@@ -5,7 +5,7 @@ if [ -f "$FLAG" ]; then
     rm -f "$FLAG"
     notify-send "Night Mode" "Disabled"
 else
-    hyprctl hyprsunset temperature 4500
+    hyprctl hyprsunset temperature 3500
     touch "$FLAG"
-    notify-send "Night Mode" "Enabled (4500K)"
+    notify-send "Night Mode" "Enabled (3500K)"
 fi
