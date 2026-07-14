@@ -1,7 +1,7 @@
 local set = vim.keymap.set
 
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-set({'n', 'i', 'v'}, '<C-c>', '<Esc>:nohlsearch<CR>', { noremap = true, silent = true })
+set({ 'n', 'i', 'v' }, '<C-c>', '<Esc>:nohlsearch<CR>', { noremap = true, silent = true })
 
 -- directory view (project view)
 -- set("n", "<leader>pv", vim.cmd.Ex)
@@ -24,9 +24,9 @@ set('n', '<leader>u', vim.cmd.UndotreeToggle)
 set("n", "<leader>gs", vim.cmd.Git);
 
 -- Global LSP attach handler
-vim.api.nvim_create_autocmd("LspAttach", { 
+vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function (_, buffer)
+    callback = function(_, buffer)
         local opts = { buffer = buffer, silent = true, noremap = true }
         local builtin = require("telescope.builtin")
 
@@ -44,24 +44,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
         set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     end,
 })
-
--- terminal
-set("n", "<leader>t", function()
-    vim.cmd.new()
-    vim.cmd.term()
-    vim.cmd.wincmd("J")
-    vim.api.nvim_win_set_height(0, 12)
-end, { desc = "Open Terminal" })
-
-set("t", "<esc><esc>", "<c-\\><c-n>")
-
-vim.api.nvim_create_autocmd("TermOpen", {
-    group = vim.api.nvim_create_augroup('custom-term', { clear = true }),
-    callback = function() 
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
-        vim.wo.winfixheight = true;
-        vim.bo.filetype = "terminal"
-    end
-})
-

@@ -16,8 +16,9 @@ return {
         },
     },
 
-    -- Theme 
-    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
+    -- Theme
+    { "blazkowolf/gruber-darker.nvim" },
+    { "ellisonleao/gruvbox.nvim",     priority = 1000, config = true },
 
     -- { "mg979/vim-visual-multi" }, - why when *cgn. exists
 
@@ -25,7 +26,7 @@ return {
 
     { "tpope/vim-fugitive" },
 
-    { 
+    {
         "lewis6991/gitsigns.nvim",
         config = function()
             vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})

@@ -1,6 +1,7 @@
 require("usein.options")
 require("usein.keymaps")
 require("usein.theme")
+require("usein.terminal")
 
 --  Add Yank Highlighting
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -10,4 +11,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end,
 })
-

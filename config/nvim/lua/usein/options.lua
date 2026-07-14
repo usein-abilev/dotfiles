@@ -15,4 +15,3 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.g.omni_sql_no_default_maps = 1
-

@@ -3,7 +3,7 @@ return {
     lazy = false,
     build = ":TSUpdate",
     init = function()
-        local parsers = { 
+        local parsers = {
             "vim",
             "json",
             "javascript",
@@ -14,14 +14,14 @@ return {
             "css",
             "lua",
             "c",
-            "go" 
+            "go"
         };
 
         local treesitter_group = vim.api.nvim_create_augroup("UseinTreesitter", { clear = true })
 
         vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
             group = treesitter_group,
-            callback = function() 
+            callback = function()
                 if vim.bo.buftype ~= "" then
                     return
                 end
@@ -32,7 +32,7 @@ return {
         vim.api.nvim_create_autocmd("User", {
             group = treesitter_group,
             once = true,
-            callback = function () 
+            callback = function()
                 require("nvim-treesitter").install(parsers)
             end,
         })

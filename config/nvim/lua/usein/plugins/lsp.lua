@@ -1,5 +1,5 @@
-return { 
-    "neovim/nvim-lspconfig", 
+return {
+    "neovim/nvim-lspconfig",
     dependencies = {
         "stevearc/conform.nvim",
         "williamboman/mason.nvim",
@@ -9,22 +9,34 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/nvim-cmp",
+        {
+            "folke/lazydev.nvim",
+            ft = "lua",
+            opts = {
+                library = {
+                    -- See the configuration section for more details
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                },
+            },
+        },
     },
-    config = function() 
+    config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "ts_ls",
                 "gopls",
                 "eslint",
+                "lua_ls",
             },
         })
 
         -- Common LSP options
         local cmp = require("cmp")
         cmp.setup({
-            snippet = { 
-                expand = function (args)
+            snippet = {
+                expand = function(args)
                     require("luasnip").lsp_expand(args.body)
                 end,
             },
@@ -33,6 +45,7 @@ return {
                 ["<C-n>"] = cmp.mapping.select_next_item(),
                 ["<C-p>"] = cmp.mapping.select_prev_item(),
                 ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                ["<Enter>"] = cmp.mapping.confirm({ select = false }),
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
@@ -45,7 +58,7 @@ return {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
                 { name = "buffer" },
-            } 
+            }
         });
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
@@ -85,7 +98,7 @@ return {
             format_on_save = function(bufnr)
                 conform.format({
                     lsp_fallback = true,
-                    async=false,
+                    async = false,
                     timeout_ms = 500,
                 });
             end,
@@ -96,10 +109,10 @@ return {
             },
         })
         vim.keymap.set({ "n", "v" }, "<leader>fm", function()
-            conform.format({ 
+            conform.format({
                 lsp_fallback = true,
-                async=false,
-                timeout_ms = 500,
+                async = false,
+                timeout_ms = 800,
             });
         end, { desc = "Format current file or selection" })
     end,
