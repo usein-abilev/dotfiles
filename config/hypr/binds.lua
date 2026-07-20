@@ -15,13 +15,11 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
-SCR = "~/.config/hypr/scripts/screenshot.sh"
 SCR_OUTPUT = "~/Pictures/Screenshots"
-hl.bind("Print", hl.dsp.exec_cmd(SCR), { locked = true })
+hl.bind("Print", hl.dsp.exec_cmd(hyprshot .. " -m region --clipboard-only -z"), { locked = true })
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd(hyprshot .. " -m output -o " .. SCR_OUTPUT .. " -z"), { locked = true })
-hl.bind("ALT + Print", hl.dsp.exec_cmd(hyprshot .. " -m window -o " .. SCR_OUTPUT .. " -z"), { locked = true })
-hl.bind("CTRL + Print", hl.dsp.exec_cmd(hyprshot .. " -m region --clipboard-only -z"), { locked = true })
 hl.bind("CTRL + SHIFT + Print", hl.dsp.exec_cmd(hyprshot .. " -m output --clipboard-only -z"), { locked = true })
+hl.bind("ALT + Print", hl.dsp.exec_cmd(hyprshot .. " -m window -o " .. SCR_OUTPUT .. " -z"), { locked = true })
 
 -- Move focus with mainMod + Vim keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
