@@ -1,6 +1,7 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("brightnessctl -d intel_backlight set 0")
     hl.exec_cmd("hyprsunset -t 3500")
+    hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 
     hl.exec_cmd("/usr/libexec/xdg-desktop-portal &")
     hl.exec_cmd("/usr/libexec/xdg-desktop-portal-gnome &")

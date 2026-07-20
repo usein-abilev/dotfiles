@@ -48,6 +48,12 @@ hl.config({
     },
 })
 
+hl.config({
+    cursor = {
+        no_hardware_cursors = true,
+    },
+})
+
 hl.permission("/usr/bin/grim", "screencopy", "allow")
 
 -----------------
