@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import evdev
+import fcntl
 import os
 import signal
 import subprocess
@@ -33,6 +34,20 @@ def find_input_devices():
     return devices
 
 
+def find_pointer_devices():
+    devices = []
+    for path in evdev.list_devices():
+        dev = evdev.InputDevice(path)
+        caps = dev.capabilities()
+        if evdev.ecodes.EV_KEY not in caps:
+            continue
+        name = dev.name.lower()
+        if not any(ptr in name for ptr in ["mouse", "touchpad", "trackpoint"]):
+            continue
+        devices.append(dev)
+    return devices
+
+
 def is_pid_alive(pid):
     try:
         os.kill(pid, 0)
@@ -42,12 +57,19 @@ def is_pid_alive(pid):
 
 
 def main():
+    lock_fd = os.open("/tmp/super-launcher.lock", os.O_CREAT | os.O_RDWR)
+    try:
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        sys.exit(0)
+
     signal.signal(signal.SIGCHLD, signal.SIG_IGN)
     devices = find_input_devices()
+    pointer_devices = find_pointer_devices()
     if not devices:
         sys.exit(1)
 
-    fds = {device.fd: device for device in devices}
+    fds = {device.fd: device for device in devices + pointer_devices}
 
     super_held = False
     other_pressed = False
