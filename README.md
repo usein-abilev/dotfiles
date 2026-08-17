@@ -20,6 +20,7 @@ The repo contains my personal configs for Linux to easily setup on a new machine
 | `clipvault-rofi-img.sh` | Rofi GUI for clipvault clipboard manager with image thumbnails |
 | `convert-to-h264.sh` | Batch `.mov` -> `.mp4` H.264 (CRF 18, slow, BT.709) |
 | `convert-to-dnxhr.sh` | Batch `.mp4`-> `.mov` DNxHR HQ (DaVinci Resolve compatible) |
+| `pdf-compress.sh` | Ghostscript `/ebook`-quality recompression: `foo.pdf` -> `foo.compressed.pdf` |
 | `voice-dictation.py` | Hold-to-dictate mic -> Whisper -> paste into focused window (Hyprland push-to-talk on Right Alt) |
 
 ## Installation
