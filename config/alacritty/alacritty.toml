@@ -16,9 +16,9 @@ family = "SFMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono"
+# family = "JetBrains Mono"
 # style = "Regular"
-# # family = "SFMono Nerd Font"
+family = "SFMono Nerd Font"
 
 [general]
 import = [

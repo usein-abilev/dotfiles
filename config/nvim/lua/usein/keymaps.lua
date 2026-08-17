@@ -26,8 +26,8 @@ set("n", "<leader>gs", vim.cmd.Git);
 -- Global LSP attach handler
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(_, buffer)
-        local opts = { buffer = buffer, silent = true, noremap = true }
+    callback = function(args)
+        local opts = { buffer = args.buf, silent = true, noremap = true }
         local builtin = require("telescope.builtin")
 
         set("n", "gd", builtin.lsp_definitions, opts)

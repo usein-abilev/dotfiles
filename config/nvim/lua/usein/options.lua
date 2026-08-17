@@ -8,6 +8,7 @@ vim.opt.showmode = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 8
 vim.opt.inccommand = "split";
+vim.opt.smoothscroll = true
 
 vim.opt.laststatus = 2
 vim.opt.statusline = "%{toupper(mode())} | %f %y %m %= %l:%c [%p%%]"
