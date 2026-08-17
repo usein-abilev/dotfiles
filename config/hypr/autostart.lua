@@ -6,6 +6,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("/usr/libexec/xdg-desktop-portal &")
     hl.exec_cmd("/usr/libexec/xdg-desktop-portal-gnome &")
     hl.exec_cmd("/usr/libexec/xdg-desktop-portal-hyprland &")
+    hl.exec_cmd("ydotoold &")
     hl.exec_cmd("sleep 1 && dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\" &")
     hl.exec_cmd(terminal)
     hl.exec_cmd("waybar")
@@ -16,6 +17,9 @@ hl.on("hyprland.start", function()
     -- clipboard manager daemon
     hl.exec_cmd("/usr/bin/wl-paste --type text --watch ~/go/bin/cliphist store &")
     hl.exec_cmd("/usr/bin/wl-paste --type image --watch ~/go/bin/cliphist store &")
+
+    -- voice dictation (hold Right Alt to record, release to paste)
+    hl.exec_cmd("~/whisper-local/venv/bin/python ~/dotfiles/scripts/voice-dictation.py &")
 
     -- enable notifications
     hl.exec_cmd("swaync")
